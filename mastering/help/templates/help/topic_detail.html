@@ -6,8 +6,8 @@
 
 {{ topic.title }}
 
-{% for comment in comments %}
-    <p>zalupa</p>
+{% for comment in topic.comments.all %}
+    <p>{{ comment.comment_text }}</p>
     {% empty %}
     <p>pizda</p>
 {% endfor %}

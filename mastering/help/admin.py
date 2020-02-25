@@ -4,7 +4,7 @@ from .models import Comment, Topic
 
 @admin.register(Topic)
 class TopicAdmin(admin.ModelAdmin):
-    list_display = ('author', 'title', 'topic_text', 'created')
+    list_display = ('author', 'title', 'topic_text', 'created',)
     prepopulated_fields = {"slug": ("title",)}
 
 

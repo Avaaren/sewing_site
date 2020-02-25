@@ -35,12 +35,6 @@ class TopicDetailView(DetailView):
                                  slug=slug, created__year=year,
                                  created__month=month, created__day=day)
 
-    def get_context_data(self, **kwargs):
-        data = super().get_context_data(**kwargs)
-        topic = self.get_object()
-        data['comments'] = topic.comments.all()
-        return data
-
 
 class TopicCreateView(CreateView):
     form_class = NewTopicForm
