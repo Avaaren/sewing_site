@@ -11,14 +11,14 @@
 <div class="comments">
     <form class='comment-form' action="." method="POST">
         {{ form.as_p }}
-        <p><input type="submit">Send comment</p>
+        <p><input type="submit" value='Send comment'></p>
         {% csrf_token %}
     </form>
     <div class="comment-fields">
         {% for comment in topic.comments.all %}
             <p>{{ comment.comment_text }}</p>
         {% empty %}
-            <p>pizda</p>
+            <p>No comments yet</p>
         {% endfor %}
     </div>
 </div>

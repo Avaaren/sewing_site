@@ -18,43 +18,36 @@ class TopicListView(ListView):
     template_name = 'help/forum.html'
 
 
-# def topic_detail(request, year, month, day, slug):
-#     topic = get_object_or_404(Topic, slug=slug, created__year=year,
-#                               created__month=month, created__day=day)
-
-#     new_comme
 class TopicDetailView(DetailView, CreateView):
     template_name = 'help/topic_detail.html'
-    queryset = Topic.objects.all()
     context_object_name = 'topic'
+    # Declare fields for ModelFormMixin
     form_class = NewCommentForm
     model = Comment
 
-    def get(self, request, year, month, day, slug):
-        form = NewCommentForm()
-        return super(TopicDetailView, self).get(self, request)
-
+    # When comment form is submitted with POST, writing comment to database
     def post(self, request, year, month, day, slug):
         topic = get_object_or_404(Topic,
                                  slug=slug, created__year=year,
                                  created__month=month, created__day=day)
-                                 
+
         form = NewCommentForm(data=request.POST)
         comment = form.save(commit=False)
         comment.author = request.user
         comment.topic = topic
         comment.save()
+        # Maybe something better?
         return redirect(reverse('help:topic_detail', kwargs={'slug': slug,
                                                              'year': year, 
                                                              'month': month,
                                                               'day': day})) 
-
+    # Overriding default get_object to get topic with custom parameters
     def get_object(self):
         slug = self.kwargs.get('slug')
         year = self.kwargs.get('year')
         month = self.kwargs.get('month')
         day = self.kwargs.get('day')
-
+        
         return get_object_or_404(Topic,
                                  slug=slug, created__year=year,
                                  created__month=month, created__day=day)
