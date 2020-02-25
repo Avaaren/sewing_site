@@ -1,0 +1,12 @@
+{% extends 'landing/base.html' %}
+
+{% block title %}Help{% endblock %}
+{% block content %}
+<h1>Topics</h1>
+
+<form action="." method='POST'>
+    {{ form.as_p }}
+    {% csrf_token %}
+    <p><input type="submit" value='Confirm'></p>
+</form>
+{% endblock %}

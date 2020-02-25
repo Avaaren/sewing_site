@@ -1,0 +1,50 @@
+{% extends 'landing/base.html' %}
+{% load static %}
+{% block title %}Help{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'help/css/forum.css' %}">
+
+<article class='topics-block'>
+    <div class="topic-header">
+        <h1>Topics</h1>
+        <h2><a href="{% url 'help:new_topic' %}">Тут новый создавать топик <i class="fas fa-plus"></i></a></h2>
+    </div>
+    <div class="topic-list">
+        {% for topic in topic_list %}
+        <div class="topic-list-item">
+            <h2><a href="{{ topic.get_absolute_url }}">{{ topic.title }}</a></h2>
+            <p class=topic-text>
+                {{ topic.topic_text|truncatewords:50 }} <a href="{{ topic.get_absolute_url }}">Читать далее <i class="fas fa-angle-right"></i><i class="fas fa-angle-right"></i><i class="fas fa-angle-right"></i></a> 
+                
+            </p>
+        </div>
+        {% empty %}
+            <h2>No topics yet</h2>
+        {% endfor %}
+    </div>
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+
+    
+</article>
+
+
+
+
+{% endblock %}

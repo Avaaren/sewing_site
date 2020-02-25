@@ -1,0 +1,191 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Landing{% endblock %}</title>
+  
+  <link rel="stylesheet" href="{% static 'landing/css/base.css' %}">
+  <script src="https://kit.fontawesome.com/b98691c44a.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <nav class="navbar">
+
+    <div class="navbar_wrapper">
+
+      <div class="navbar_logo">
+        <a href="/"><img src="{% static 'landing/img/Logo.png' %}" alt="" class="navbar_logo_img"></a>
+      </div>
+
+      <div class="navbar_separator">
+        <!-- <img src="../static/img/нижняя-полоса.png" alt="" class = "navbar_separator_img"> -->
+        <span class="navbar-login-span">
+          {% if request.user.is_authenticated %}
+          <i>Hello, {{ request.user.username }}</i>
+            <a href="{% url 'account:logout' %}">
+              <i class="fas fa-sign-in-alt">Logout</i>
+            </a>
+          {% else %}
+          <i>You can <a href="{% url 'account:registration' %}">sign-up </a>here</i>
+          <a href="{% url 'account:logout' %}">
+            <i class="fas fa-sign-in-alt">Login</i>
+          </a>
+          {% endif %}
+        </span>
+        
+      </div>
+
+      <div class="navbar_menu">
+
+        <ul class="navbar_ul">
+          <li class="navbar_ul_item">
+            <a href="#">О нас</a>
+            <ul class="navbar_sub_ul">
+              <li class="navbar_sub_ul_item"><a href="#">Контакты</a></li>
+              <li class="navbar_sub_ul_item"><a href="#">Предложения</a></li>
+              <li class="navbar_sub_ul_item"><a href="#">Еще че то)</a></li>
+            </ul>
+          </li>
+          <li class="navbar_ul_item">
+            <a href="#">Кройка</a>
+            <ul class="navbar_sub_ul">
+              <li class="navbar_sub_ul_item">
+                <a href="#">Конструирование</a>
+                <ul class="navbar_second_level_sub_ul">
+
+                  <li class="navbar_second_level_sub_ul_item"><a href="#">Поясные изделия</a></li>
+                  <li class="navbar_second_level_sub_ul_item"><a href="#">Плечевые изделия </a></li>
+                  <li class="navbar_second_level_sub_ul_item"><a href="#">Нижнее белье</a></li>
+
+                </ul>
+              </li>
+              <li class="navbar_sub_ul_item">
+                <a href="#">Выкройки</a>
+                <ul class="navbar_second_level_sub_ul">
+
+                  <li class="navbar_second_level_sub_ul_item"><a href="#">blank</a></li>
+                  <li class="navbar_second_level_sub_ul_item"><a href="#">blank</a></li>
+                  <li class="navbar_second_level_sub_ul_item"><a href="#">blank</a></li>
+                  
+                </ul>
+              </li>
+              <li class="navbar_sub_ul_item">
+                <a href="#">Моделирование</a>
+                <ul class="navbar_second_level_sub_ul">
+
+                  <li class="navbar_second_level_sub_ul_item"><a href="#">blank</a></li>
+                  <li class="navbar_second_level_sub_ul_item"><a href="#">blank</a></li>
+
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="navbar_ul_item">
+            <a href="#">Шитье</a>
+            <ul class="navbar_sub_ul">
+              <li class="navbar_sub_ul_item"><a href="#">Поясные изделия</a></li>
+              <li class="navbar_sub_ul_item"><a href="#">Плечевые изделия</a></li>
+              <li class="navbar_sub_ul_item"><a href="#">Нижнее белье</a></li>
+            </ul>
+          </li>
+          <li class="navbar_ul_item">
+            <a href="#">Для животных</a>
+            <ul class="navbar_sub_ul">
+              <li class="navbar_sub_ul_item"><a href="#">Одежда</a></li>
+              <li class="navbar_sub_ul_item"><a href="#">Аксессуары</a></li>
+            </ul>
+          </li>
+          <li class="navbar_ul_item">
+            <a href="#">Помощь</a>
+            <ul class="navbar_sub_ul">
+              <li class="navbar_sub_ul_item"><a href="#">FAQ</a></li>
+              <li class="navbar_sub_ul_item"><a href="{% url 'help:topic_list' %}">Форум</a></li>
+            </ul>
+          </li>
+        </ul>
+
+      </div>
+
+    </div>
+
+
+  </nav>
+  <div class="sidebar">
+    <div class="sidebar_menu">
+
+      <li class="sidebar_menu_item">
+          <a href="/" class="sidebar_menu_item_btn">Главная</a>
+      </li>
+
+      <li class="sidebar_menu_item" id='about-us'>
+          <a href="#about-us" class="sidebar_menu_item_btn">О нас</a>
+          <div class="sidebar_submenu">
+              <a href="#">Контакты</a>
+              <a href="#">Предложения</a>
+              <a href="#">Еще что то)</a>
+          </div>
+      </li>
+
+      <li class="sidebar_menu_item" id='cutting'>
+          <a href="#cutting" class="sidebar_menu_item_btn">Кройка</a>
+          <div class="sidebar_submenu">
+            <!-- <ul class=sidebar_second_level_ul>
+              <li class=sidebar_second_level_ul_item>Выкройки</li>
+              <li class=sidebar_second_level_ul_item>Закройки</li>
+              <li class=sidebar_second_level_ul_item>ваыаыва</li>
+            </ul> -->
+              <a href="#">Конструирование</a>
+              
+              <a href="#">Выкройки</a>
+              <a href="#">Моделирование</a>
+          </div>
+      </li>
+
+      <li class="sidebar_menu_item" id='sewing'>
+        <a href="#sewing" class="sidebar_menu_item_btn">Шитье</a>
+        <div class="sidebar_submenu">
+            <a href="#">Плечевые изделия</a>
+            <a href="#">Поясные изделия</a>
+            <a href="#">Нижнее белье</a>
+        </div>
+    </li>
+
+    <li class="sidebar_menu_item" id='for-animals'>
+      <a href="#for-animals" class="sidebar_menu_item_btn">Для животных</a>
+      <div class="sidebar_submenu">
+          <a href="#">Одежда</a>
+          <a href="#">Аксессуары</a>
+      </div>
+  </li>
+
+  <li class="sidebar_menu_item" id='help'>
+    <a href="#help" class="sidebar_menu_item_btn">Помощь</a>
+    <div class="sidebar_submenu">
+        <a href="#">Форум</a>
+        <a href="#">FAQ</a>
+    </div>
+</li>
+  </div>
+  </div>
+  <!-- <section class='first'>
+    <div class="content">
+
+    </div>
+  </section> -->
+
+  <!-- <div class="sidebar">
+    
+  </div> -->
+  <div class="content-container">
+    {% block content %}
+    {% endblock %}
+  </div>
+ 
+ 
+  <script src="{% static 'landing/scripts/base.js' %}"></script>
+</body>
+
+</html>

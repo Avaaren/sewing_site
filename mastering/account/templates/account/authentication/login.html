@@ -1,0 +1,16 @@
+{% extends 'landing/base.html' %}
+{% load static %}
+
+{% block title %}Login page{% endblock %}
+
+{% block content %}
+    <div class="login_form">
+        <h1>Please login using the form below</h1>
+    <form action="." method="POST">
+        {{ form.as_p}}
+        <input type="hidden" name="next" value="{{ next }}" />
+        <p><input type="submit" value='Confirm'></p>
+        {% csrf_token %}
+    </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'landing/base.html' %}
+
+{% block title %}Help{% endblock %}
+{% block content %}
+<h1>Topics</h1>
+
+{{ topic.title }}
+
+{% for comment in comments %}
+    <p>zalupa</p>
+    {% empty %}
+    <p>pizda</p>
+{% endfor %}
+{% endblock %}

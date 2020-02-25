@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+body{
+    /* background:url(.) */
+}
+.topic-header h1 {
+    color: rgb(47, 47, 56);
+    font-size:80px;
+    font-family: sans-serif;
+}
+
+.topic-header h2 {
+    color: rgb(84, 84, 177);
+    font-size:60px;
+    font-family: sans-serif;
+}
+
+.topic-list h2 {
+    
+    font-size: 45px;
+    
+}
+
+.topic-list h2 a {
+    color: rgb(84, 84, 177);
+    text-decoration: none;
+}
+.topic-list h2 a:visited {
+    text-decoration: none;
+    color: rgb(84, 84, 177);
+}
+
+.topic-list p {
+    font-size:26px;
+    font-family: sans-serif;
+}
+
+.topic-list-item{
+    border: 3px solid rgb(0, 0, 0);
+    margin-bottom:10px;
+}
+
+.topic-list p>a {
+    color: rgb(84, 84, 177);
+    text-decoration: none;
+}
+.pagination{
+    width:400px;
+    margin: 0 auto;
+}
+
