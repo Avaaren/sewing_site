@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.news-block{
+    padding: 10px;
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+
+.news-block .news-title a{
+    text-decoration: none;
+    color: rgb(100, 91, 228);
+    cursor: pointer;
+    
+}
+
+.news-block .news-text p{
+    font-family:sans-serif;
+    font-size:28px;
+    
+}

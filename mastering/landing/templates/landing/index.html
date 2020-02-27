@@ -4,7 +4,17 @@
 {% block title %}Main page{% endblock %}
 
 {% block content %}
-<i class="glyphicon glyphicon-log-in">sdadas</i>
-        <i class="glyphicon glyphicon-log-in">asdas</i>
-        <i class="glyphicon glyphicon-log-in">dasdas</i>
+<link rel="stylesheet" href="{% static 'landing/css/main_page.css' %}">
+{% for news in news_list %}
+<div class="news-block">
+        <div class="news-title">
+               <h2><a href="{{ news.0 }}">{{ news.1 }}</a></h2> 
+        </div>
+        <div class="news-text">
+                <p>
+                        {{ news.2 }}
+                </p>
+        </div>
+</div>
+{% endfor %}
 {% endblock %}
