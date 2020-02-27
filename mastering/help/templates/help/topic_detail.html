@@ -1,7 +1,8 @@
 {% extends 'landing/base.html' %}
-
+{% load static %}
 {% block title %}Help{% endblock %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'help/css/detail.css' %}" />
 <h1>Topics</h1>
 
 {{ topic.title }}
@@ -10,17 +11,24 @@
 
 <div class="comments">
     <form class='comment-form' action="." method="POST">
-        {{ form.as_p }}
-        <p><input type="submit" value='Send comment'></p>
+        <h3>Comment form</h3>
+        {{ form.comment_text }}
+        <input type="submit" value='Send comment'>
         {% csrf_token %}
     </form>
-    <div class="comment-fields">
-        {% for comment in topic.comments.all %}
+    {% for comment in topic.comments.all %}
+    <div class="comment">
+        <div class="comment-header">
+            <p>#{{ comment.pk }} {{ comment.author }} {{ comment.created }}</p>
+        </div>
+        <div class="comment-body">
             <p>{{ comment.comment_text }}</p>
+        </div>
         {% empty %}
-            <p>No comments yet</p>
-        {% endfor %}
+        <p>No comments yet</p>
+
     </div>
+    {% endfor %}
 </div>
 
 {% endblock %}
