@@ -1,7 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
 from .models import NewsArticle
+from celery import task
 
+@task
 def get_news_from_belta():
     #Getting response from url
     URL = 'https://www.belta.by/all_news'
