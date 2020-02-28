@@ -23,3 +23,14 @@ let el = document.querySelectorAll('.navbar_ul_item, .navbar_sub_ul_item');
         return false
       }
     }
+
+$(function(){
+  $(window).scroll(function(){
+    if (window.scrollY > 250) {
+      $('.sidebar').show(200);
+    }
+    else{
+      $('.sidebar').hide(200);
+    }
+  })
+});

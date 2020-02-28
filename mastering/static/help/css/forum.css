@@ -5,7 +5,7 @@
     
 }
 body{
-    /* background:url(.) */
+    background:url(../img/dark_background.jpg)
 }
 .topic-header h1 {
     color: rgb(47, 47, 56);

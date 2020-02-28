@@ -23,6 +23,7 @@
       <div class="navbar_separator">
         <!-- <img src="../static/img/нижняя-полоса.png" alt="" class = "navbar_separator_img"> -->
         <span class="navbar-login-span">
+          
           {% if request.user.is_authenticated %}
           <i>Hello, {{ request.user.username }}</i>
             <a href="{% url 'account:logout' %}">
@@ -117,7 +118,7 @@
     <div class="sidebar_menu">
 
       <li class="sidebar_menu_item">
-          <a href="/" class="sidebar_menu_item_btn">Главная</a>
+          <a href="/" class="sidebar_menu_item_btn" id='scroll-text'>Главная</a>
       </li>
 
       <li class="sidebar_menu_item" id='about-us'>

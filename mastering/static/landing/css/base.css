@@ -142,6 +142,7 @@ ul.navbar_second_level_sub_ul li :hover {
     right: 0;
     width: 350px;
     height: 300px;
+    display: none;
     /* background-color:red; */
 }
 
