@@ -4,6 +4,6 @@ from . import views
 app_name = 'landing'
 
 urlpatterns = [
-    path('', views.main_page, name='main_page'),
+    path('', views.NewsListView.as_view(), name='main_page'),
     
 ]

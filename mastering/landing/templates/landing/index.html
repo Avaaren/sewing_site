@@ -8,11 +8,11 @@
 {% for news in news_list %}
 <div class="news-block">
         <div class="news-title">
-                <h2><a href="{{ news.0 }}">{{ news.1 }}</a></h2>
+                <h2><a href="{{ news.link }}">{{ news.title }}</a></h2>
         </div>
         <div class="news-text">
                 <p>
-                        {{ news.2 }}
+                  {{ news.text }}
                 </p>
         </div>
 </div>

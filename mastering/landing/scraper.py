@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from .models import NewsArticle
 
 def get_news_from_belta():
     #Getting response from url
@@ -28,6 +29,16 @@ def get_news_from_belta():
         except AttributeError:
             continue
         all_news_list.append(news_list)
+        
+        if not NewsArticle.objects.filter(link=news_list[0]).exists():
+            NewsArticle.objects.create(
+                title=news_list[1],
+                link=news_list[0],
+                text=news_list[2]
+            )
+        else:
+            continue
+   
     return all_news_list
 
     
