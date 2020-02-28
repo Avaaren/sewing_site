@@ -33,7 +33,6 @@ nav.navbar {
 }
 
 .navbar_separator_img {
-   
     display: block;
     margin: 0 auto;
     height:35px
@@ -45,17 +44,15 @@ nav.navbar {
     top: 0;
     right: 0;
 }
+
 .navbar_menu{
     height: 100px;
 }
 
 .navbar_ul {
-   
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    
 }
 
 .navbar_ul_item {
@@ -63,17 +60,13 @@ nav.navbar {
     display: block;
     background-color: rgb(10, 10, 10);
     border: none;
-    /* margin: 0px 10px; */
 }
 
-.navbar_ul_item :hover {
-    
-    background-color: rgb(38, 41, 44);
-    /* border: 1px solid black; */
+.navbar_ul_item a:hover {
+    background-color: rgb(34, 117, 199);
 }
 
 .navbar_ul_item a {
-    
     display: block;
     padding: 30px 0px;
     width: 240px;
@@ -82,57 +75,46 @@ nav.navbar {
     color: rgb(255, 255, 255);
     text-decoration: none;
     font-size: 26px;
-    cursor: pointer;
-    
+    cursor: pointer;   
 }
 
 ul.navbar_sub_ul{
+    display: none;
     position: absolute;
     background-color: rgb(38, 41, 44);
-    owerflow: hidden;
-    height:0px;
-    opacity: 0;
-    transition: 0.5s;
 }
+
 ul.navbar_sub_ul li {
-    
     list-style-type:none;
     color:white;
-
 }
-ul.navbar_sub_ul li :hover {
-    
-    background-color: rgb(50, 56, 61);
 
+ul.navbar_sub_ul li :hover {
+    background-color: rgb(50, 56, 61);
 }
 
 .navbar_sub_ul_item {
 position: relative;
 }
+
 ul.navbar_second_level_sub_ul{
+    display:none;
     position: absolute;
     background-color: rgb(38, 41, 44);
     left:240px;
     top:0px;
-    /* bottom: 0; */
-    /* right: 0; */
-    owerflow: hidden;
-    height:0px;
-    opacity: 0;
-    transition: 0.5s;
 }
+
 ul.navbar_second_level_sub_ul li {
-    
+    display: block;
     list-style-type:none;
     color:white;
-
 }
 
 ul.navbar_second_level_sub_ul li :hover {
     background-color: rgb(63, 53, 53);
     list-style-type:none;
     color:white;
-
 }
 
 .sidebar{
@@ -143,7 +125,6 @@ ul.navbar_second_level_sub_ul li :hover {
     width: 350px;
     height: 300px;
     display: none;
-    /* background-color:red; */
 }
 
 .sidebar_menu{
@@ -154,8 +135,7 @@ ul.navbar_second_level_sub_ul li :hover {
 
 .sidebar_menu_item{
     border-top: 1px solid rgb(27, 25, 25);
-    owerflow:hidden;
-
+    overflow:hidden;
 }
 
 .sidebar_menu_item_btn{
@@ -168,10 +148,10 @@ ul.navbar_second_level_sub_ul li :hover {
 
 
 .sidebar_submenu{
-background:#333;
-overflow:hidden;
-transition: max-height 0.3s;
-max-height: 0;
+    background:#333;
+    overflow:hidden;
+    transition: max-height 0.3s;
+    max-height: 0;
 }
 
 .sidebar_submenu a{
@@ -199,6 +179,7 @@ max-height: 0;
 .sidebar_submenu a:hover:before{
 opacity: 1;
 }
+
 .sidebar_menu_item:target .sidebar_submenu{
     max-height:10em;
 }
@@ -213,3 +194,5 @@ opacity: 1;
     width: 1200px;
     margin: 0 auto;
 }
+
+
