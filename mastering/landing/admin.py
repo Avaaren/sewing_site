@@ -8,3 +8,5 @@ class NewsArticleAdmin(admin.ModelAdmin):
 
     class Meta:
         ordering = ['-created',]
+        verbose_name = 'article'
+        verbose_name_plural = 'articles'

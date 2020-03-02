@@ -8,3 +8,8 @@ class NewsArticle(models.Model):
     
     class Meta:
        ordering = ['-created',]
+       verbose_name = 'article'
+       verbose_name_plural = 'articles'
+    
+    def __str__(self):
+        return '{}'.format(self.title)
