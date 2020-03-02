@@ -36,11 +36,7 @@ class TopicDetailView(DetailView, CreateView):
         comment.author = request.user
         comment.topic = topic
         comment.save()
-        # Maybe something better?
-        return redirect(reverse('help:topic_detail', kwargs={'slug': slug,
-                                                             'year': year, 
-                                                             'month': month,
-                                                              'day': day})) 
+        return redirect(topic.get_absolute_url()) 
     # Overriding default get_object to get topic with custom parameters
     def get_object(self):
         slug = self.kwargs.get('slug')
@@ -69,3 +65,12 @@ class TopicCreateView(CreateView):
         instance.slug = slugify(instance.title)
         instance.save()
         return super().form_valid(form)
+
+def likes(request, pk):
+    topic = get_object_or_404(Topic, pk=pk)
+
+    if request.user in topic.likes.all():
+        topic.likes.remove(request.user)
+    else:
+        topic.likes.add(request.user)
+    return redirect(topic.get_absolute_url())

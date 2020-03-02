@@ -15,7 +15,8 @@ class Topic(models.Model):
     topic_text = models.TextField(max_length=1024)
     created = models.DateTimeField(default=timezone.now)
     updated = models.DateTimeField(auto_now=True)
-
+    likes = models.ManyToManyField(User, related_name='likes')
+    
     class Meta:
         ordering =['-created']
     def get_absolute_url(self):

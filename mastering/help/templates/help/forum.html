@@ -18,6 +18,7 @@
                 {{ topic.topic_text|truncatewords:50 }} <a href="{{ topic.get_absolute_url }}">Читать далее <i class="fas fa-angle-right"></i><i class="fas fa-angle-right"></i><i class="fas fa-angle-right"></i></a> 
                 
             </p>
+            <p class='like'>Likes: {{ topic.likes.count }}</p>
         </div>
         {% empty %}
             <h2>No topics yet</h2>

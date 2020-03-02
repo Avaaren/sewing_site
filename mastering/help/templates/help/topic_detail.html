@@ -1,14 +1,18 @@
 {% extends 'landing/base.html' %}
 {% load static %}
+
 {% block title %}Help{% endblock %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'help/css/detail.css' %}" />
 <h1>Topics</h1>
-
 {{ topic.title }}
 {{ topic.topic_text }}
 
-
+<button class='like-button' , data-likes='{{ topic.likes.count }}' ,
+    data-action='{% if request.user in topic.likes.all %}un{% endif %}liked'>
+    Like
+</button>
+<p>Total likes: <span id='like'>{{ topic.likes.count }}</span></p>
 <div class="comments">
     <form class='comment-form' action="." method="POST">
         <h3>Comment form</h3>
@@ -29,6 +33,28 @@
 
     </div>
     {% endfor %}
+
 </div>
 
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+<script>$('button.like-button').click(function () {
+        $.post(
+            "{% url 'help:like' topic.pk  %}",
+            {
+                csrfmiddlewaretoken: '{{ csrf_token }}'
+            }
+        );
+        if ($(this).attr('data-action') == 'liked') {
+            let previous_likes = parseInt($('#like').text());
+            $('#like').text(previous_likes + 1);
+            $('button.like-button').attr('data-action', $('button.like-button').attr('data-action') == 'unliked' ? 'liked' : 'unliked')
+        }
+        else {
+            let previous_likes = parseInt($('#like').text());
+            $('#like').text(previous_likes - 1);
+            $('button.like-button').attr('data-action', $('button.like-button').attr('data-action') == 'liked' ? 'unliked' : 'liked')
+        }
+    });</script>
 {% endblock %}
